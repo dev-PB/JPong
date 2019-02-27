@@ -20,7 +20,8 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy buffer;
     private Graphics graphics;
-    private Player player;
+    private Player playerOne;
+    private Player playerTwo;
     private KeyManager keyManager;
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
@@ -35,7 +36,8 @@ public class Game implements Runnable {
     private void init(){
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
-        player = new Player(10,10,100,100,Color.green, true, this);
+        playerOne = new Player(20,20,100,30,Color.red, false, this);
+        playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, true, this);
         
         
         
@@ -55,7 +57,8 @@ public class Game implements Runnable {
         //Clears screen
         graphics.clearRect(0,0,windowWidth,windowHeight);
         //Renders things
-        player.update(graphics);
+        playerOne.update(graphics);
+        playerTwo.update(graphics);
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
