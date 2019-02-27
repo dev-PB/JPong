@@ -1,7 +1,9 @@
 package jpong;
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import jpong.display.Display;
+import jpong.entities.Paddle;
 
 /**
  *
@@ -27,7 +29,7 @@ public class Game implements Runnable {
     
     
     private void init(){
-        display = new Display(windowTitle, windowWidth, windowHeight);
+        display = new Display(windowTitle, windowWidth, windowHeight);     
     }
     
     private void update(){
@@ -35,7 +37,19 @@ public class Game implements Runnable {
     }
     
     private void render(){
-        // stuff to render each tick
+        buffer = display.getCanvas().getBufferStrategy();
+        if(buffer == null){
+            display.getCanvas().createBufferStrategy(3);
+            return;
+        }
+        graphics = buffer.getDrawGraphics();
+        //Clears screen
+        graphics.clearRect(0,0,windowWidth,windowHeight);
+        //Renders things
+        
+        //Displays buffer
+        buffer.show(); 
+        graphics.dispose();
     }
     
     @Override 
