@@ -3,8 +3,8 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import jpong.display.Display;
-import jpong.entities.Paddle;
 import jpong.entities.Player;
+import jpong.input.KeyManager;
 
 /**
  *
@@ -21,17 +21,22 @@ public class Game implements Runnable {
     private BufferStrategy buffer;
     private Graphics graphics;
     //private Player player;
+    private KeyManager keyManager;
+    
     public Game(String windowTitle, int windowWidth, int windowHeight){
         isRunning = false;
         this.windowTitle = windowTitle;
         this.windowWidth = windowWidth;
         this.windowHeight = windowHeight;
+        keyManager = new KeyManager();
     }
     
     
     private void init(){
-        display = new Display(windowTitle, windowWidth, windowHeight);    
-        //player = new Player(10,10,100,100,Color.green);
+        display = new Display(windowTitle, windowWidth, windowHeight);
+        display.getJFrame().addKeyListener(keyManager);
+        //player = new Player(10,10,100,100,Color.green, this);
+        
         
         
     }
@@ -54,6 +59,18 @@ public class Game implements Runnable {
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
+    }
+    
+    public KeyManager getKeyManager(){
+        return keyManager;
+    }
+    
+    public int getWindowWidth(){
+        return windowWidth;
+    }
+    
+    public int getWindowHeight(){
+        return windowHeight;
     }
     
     @Override 

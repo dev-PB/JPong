@@ -14,6 +14,7 @@ public class Paddle {
     protected int height;
     protected int points;
     protected Color colour;
+    protected int moveSpeed;
     
     public Paddle(int x, int y, int width, int height, Color colour){
         this.x = x;
@@ -22,6 +23,7 @@ public class Paddle {
         this.height = height;  
         this.colour = colour;
         points = 0;
+        moveSpeed = 2;
     }
     public void update(Graphics graphics){
         movePaddle();
