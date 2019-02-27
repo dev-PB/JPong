@@ -8,12 +8,12 @@ import java.awt.Graphics;
  * @author Ryan Wilson
  */
 public class Paddle {
-    private int x;
-    private int y;
-    private int width;
-    private int height;
-    private int points;
-    private Color colour;
+    protected int x;
+    protected int y;
+    protected int width;
+    protected int height;
+    protected int points;
+    protected Color colour;
     
     public Paddle(int x, int y, int width, int height, Color colour){
         this.x = x;
@@ -33,7 +33,7 @@ public class Paddle {
         graphics.fillRect(x,y,width,height);
     }
     
-    private void movePaddle(){
+    public void movePaddle(){
         
     }
     

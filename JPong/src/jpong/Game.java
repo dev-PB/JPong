@@ -4,6 +4,7 @@ import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import jpong.display.Display;
 import jpong.entities.Paddle;
+import jpong.entities.Player;
 
 /**
  *
@@ -19,7 +20,7 @@ public class Game implements Runnable {
     private Thread thread;
     private BufferStrategy buffer;
     private Graphics graphics;
-    
+    //private Player player;
     public Game(String windowTitle, int windowWidth, int windowHeight){
         isRunning = false;
         this.windowTitle = windowTitle;
@@ -29,7 +30,10 @@ public class Game implements Runnable {
     
     
     private void init(){
-        display = new Display(windowTitle, windowWidth, windowHeight);     
+        display = new Display(windowTitle, windowWidth, windowHeight);    
+        //player = new Player(10,10,100,100,Color.green);
+        
+        
     }
     
     private void update(){
@@ -46,7 +50,7 @@ public class Game implements Runnable {
         //Clears screen
         graphics.clearRect(0,0,windowWidth,windowHeight);
         //Renders things
-        
+        //player.update(graphics);
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
