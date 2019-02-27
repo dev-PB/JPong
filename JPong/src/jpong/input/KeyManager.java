@@ -12,14 +12,18 @@ public class KeyManager implements KeyListener {
     private boolean[] keys;
     private boolean left;
     private boolean right;
+    private boolean A;
+    private boolean D;
     
     public KeyManager(){
         keys = new boolean[256];
     }
     
     public void update(){
-        left = keys[KeyEvent.VK_A];
-        right = keys[KeyEvent.VK_D];
+        left = keys[KeyEvent.VK_LEFT];
+        right = keys[KeyEvent.VK_RIGHT];
+        A = keys[KeyEvent.VK_A];
+        D = keys[KeyEvent.VK_D];
     }
     
     @Override
@@ -37,12 +41,20 @@ public class KeyManager implements KeyListener {
         
     }
     
-    public boolean getLeft(){
-        return left;
+    public boolean getLeft(boolean arrows){
+        if(arrows){
+            return left;
+        } else {
+            return A;
+        }
     }
     
-    public boolean getRight(){
-        return right;
+    public boolean getRight(boolean arrows){
+        if(arrows){
+            return right;
+        } else {
+            return D;
+        }
     }
     
 }
