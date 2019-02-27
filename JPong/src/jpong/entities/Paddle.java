@@ -19,15 +19,37 @@ public class Paddle {
         this.x = x;
         this.y = y;
         this.width = width;
-        this.height = height;
+        this.height = height;  
         this.colour = colour;
         points = 0;
     }
+    public void update(Graphics graphics){
+        movePaddle();
+        renderPaddle(graphics);
+    }
     
-    public void renderPaddle(Graphics graphics){
+    private void renderPaddle(Graphics graphics){
         graphics.setColor(colour);
         graphics.fillRect(x,y,width,height);
     }
     
+    private void movePaddle(){
+        
+    }
     
+    public int getX(){
+        return x;
+    }
+    
+    public int getY(){
+        return y;
+    }
+    
+    public int getWidth(){
+        return width;
+    }
+    
+    public int getHeight(){
+        return height;
+    }
 }
