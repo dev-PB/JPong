@@ -40,8 +40,20 @@ public class Paddle {
         graphics.fillRect(x,y,width,height);
     }
     
+    public boolean checkIfWin(int scoreToWin){
+        if (points >= scoreToWin){
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
     public void movePaddle(){
         
+    }
+    
+    public Color getColour(){
+        return colour;
     }
     
     public int getX(){

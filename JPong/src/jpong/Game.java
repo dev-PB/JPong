@@ -17,6 +17,7 @@ public class Game implements Runnable {
     private String windowTitle;
     private int windowWidth;
     private int windowHeight;
+    private final int WINNING_SCORE;
     
     private Display display;
     private Thread thread;
@@ -29,6 +30,7 @@ public class Game implements Runnable {
     private Font scoreFont;
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
+        WINNING_SCORE = 10;
         isRunning = false;
         this.windowTitle = windowTitle;
         this.windowWidth = windowWidth;
@@ -38,6 +40,7 @@ public class Game implements Runnable {
     
     
     private void init(){
+        
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
         playerOne = new Player(20,20,100,30,Color.red, this, false);
@@ -70,6 +73,7 @@ public class Game implements Runnable {
         playerTwo.render(graphics);
         ball.render(graphics);
         renderScores(playerOne.getPoints(), playerTwo.getPoints());
+        renderWinners();
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
@@ -81,6 +85,20 @@ public class Game implements Runnable {
         graphics.drawString("Player two: " + p2Points, windowWidth - 150, windowHeight - 20);
     }
     
+    private void renderWinners(){
+        if (playerOne.checkIfWin(WINNING_SCORE)){
+            graphics.setColor(playerOne.getColour());
+            graphics.drawString("PLAYER ONE WINS!", (windowWidth / 2) - 150, windowHeight / 2);
+            isRunning = false;
+            
+            
+        } else if (playerTwo.checkIfWin(WINNING_SCORE)){
+            graphics.setColor(playerTwo.getColour());
+            graphics.drawString("PLAYER TWO WINS!", (windowWidth / 2) - 150, windowHeight / 2);
+            isRunning = false;
+            
+        }
+    }
     public KeyManager getKeyManager(){
         return keyManager;
     }
