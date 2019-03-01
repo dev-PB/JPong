@@ -47,7 +47,9 @@ public class Game implements Runnable {
     }
     
     private void update(){
-        // stuff to update each tick
+        playerOne.update();
+        playerTwo.update();
+        ball.update();
     }
     
     private void render(){
@@ -57,12 +59,13 @@ public class Game implements Runnable {
             return;
         }
         graphics = buffer.getDrawGraphics();
+        
         //Clears screen
         graphics.clearRect(0,0,windowWidth,windowHeight);
         //Renders things
-        playerOne.update(graphics);
-        playerTwo.update(graphics);
-        ball.update(graphics);
+        playerOne.render(graphics);
+        playerTwo.render(graphics);
+        ball.render(graphics);
         //Displays buffer
         buffer.show(); 
         graphics.dispose();

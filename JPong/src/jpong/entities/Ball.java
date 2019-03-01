@@ -38,14 +38,14 @@ public class Ball {
         
     }
     
-    public void update(Graphics graphics){
+    public void update(){
        paddleCollision();
        outOfBounds();
        move();
-       render(graphics);
+       
     }
     
-    private void render(Graphics graphics){
+    public void render(Graphics graphics){
         graphics.setColor(colour);
         graphics.fillRect(x,y,width,height);
     }

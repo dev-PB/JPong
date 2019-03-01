@@ -30,12 +30,12 @@ public class Paddle {
         moveSpeed = 2;
         DEFAULT_X = (game.getWindowWidth() / 2) - (width/2);
     }
-    public void update(Graphics graphics){
+    public void update(){
         movePaddle();
-        renderPaddle(graphics);
+        
     }
     
-    private void renderPaddle(Graphics graphics){
+    public void render(Graphics graphics){
         graphics.setColor(colour);
         graphics.fillRect(x,y,width,height);
     }
