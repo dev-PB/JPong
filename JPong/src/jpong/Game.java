@@ -28,6 +28,7 @@ public class Game implements Runnable {
     private Ball ball;
     private KeyManager keyManager;
     private Font scoreFont;
+    private Font winFont;
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
         WINNING_SCORE = 10;
@@ -46,6 +47,7 @@ public class Game implements Runnable {
         playerOne = new Player(20,20,100,30,Color.red, this, false);
         playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, this, true);
         scoreFont = new Font("Comic Sans MS", Font.PLAIN, 20);
+        winFont = new Font("Comic Sans MS", Font.BOLD, 30);
         ball = new Ball(10,10,Color.black,this);
         
         
@@ -86,13 +88,16 @@ public class Game implements Runnable {
     }
     
     private void renderWinners(){
+        graphics.setFont(winFont);
         if (playerOne.checkIfWin(WINNING_SCORE)){
+            graphics.clearRect(0,0,windowWidth,windowHeight);
             graphics.setColor(playerOne.getColour());
             graphics.drawString("PLAYER ONE WINS!", (windowWidth / 2) - 150, windowHeight / 2);
             isRunning = false;
             
             
         } else if (playerTwo.checkIfWin(WINNING_SCORE)){
+            graphics.clearRect(0,0,windowWidth,windowHeight);
             graphics.setColor(playerTwo.getColour());
             graphics.drawString("PLAYER TWO WINS!", (windowWidth / 2) - 150, windowHeight / 2);
             isRunning = false;
