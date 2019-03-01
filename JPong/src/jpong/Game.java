@@ -3,6 +3,7 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import jpong.display.Display;
+import jpong.entities.Ball;
 import jpong.entities.Player;
 import jpong.input.KeyManager;
 
@@ -22,6 +23,7 @@ public class Game implements Runnable {
     private Graphics graphics;
     private Player playerOne;
     private Player playerTwo;
+    private Ball ball;
     private KeyManager keyManager;
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
@@ -38,6 +40,7 @@ public class Game implements Runnable {
         display.getJFrame().addKeyListener(keyManager);
         playerOne = new Player(20,20,100,30,Color.red, false, this);
         playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, true, this);
+        ball = new Ball(10,10,Color.black,this);
         
         
         
@@ -59,6 +62,7 @@ public class Game implements Runnable {
         //Renders things
         playerOne.update(graphics);
         playerTwo.update(graphics);
+        ball.update(graphics);
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
@@ -76,6 +80,13 @@ public class Game implements Runnable {
         return windowHeight;
     }
     
+    public Player getPlayerOne(){
+        return playerOne;
+    }
+    
+    public Player getPlayerTwo(){
+        return playerTwo;
+    }
     @Override 
     public void run(){
         init();
