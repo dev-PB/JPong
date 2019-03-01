@@ -1,5 +1,6 @@
 package jpong;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import jpong.display.Display;
@@ -66,9 +67,17 @@ public class Game implements Runnable {
         playerOne.render(graphics);
         playerTwo.render(graphics);
         ball.render(graphics);
+        renderScores(playerOne.getPoints(), playerTwo.getPoints());
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
+    }
+    
+    private void renderScores(int p1Points, int p2Points){
+     
+        graphics.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        graphics.drawString("Player one: " + p1Points, windowWidth - 150, 20);
+        graphics.drawString("Player two: " + p2Points, windowWidth - 150, windowHeight - 20);
     }
     
     public KeyManager getKeyManager(){
@@ -90,6 +99,8 @@ public class Game implements Runnable {
     public Player getPlayerTwo(){
         return playerTwo;
     }
+    
+    
     @Override 
     public void run(){
         init();

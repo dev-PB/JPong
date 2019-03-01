@@ -66,6 +66,7 @@ public class Paddle {
     
     public void incrementPoints(){
         points++;
+        
     }
     
     public void reset(){
