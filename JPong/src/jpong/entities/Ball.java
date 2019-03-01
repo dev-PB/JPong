@@ -2,6 +2,7 @@ package jpong.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.concurrent.TimeUnit;
 import jpong.Game;
 
 /**
@@ -11,8 +12,8 @@ import jpong.Game;
 public class Ball {
     private int x;
     private int y;
-    private final int DEFAULT_X = 400;
-    private final int DEFAULT_Y = 300;
+    private final int DEFAULT_X;
+    private final int DEFAULT_Y;
     private int width;
     private int height;
     private Color colour;
@@ -23,8 +24,6 @@ public class Ball {
     private boolean serveDirection;
     
     public Ball(int width, int height, Color colour, Game game){
-        x = DEFAULT_X;
-        y = DEFAULT_Y;
         xMovement = 1;
         yMovement = -1;
         this.width = width;
@@ -32,6 +31,10 @@ public class Ball {
         this.colour = colour;
         this.game = game;
         serveDirection = true;
+        DEFAULT_X = (game.getWindowWidth() / 2) - (this.width / 2);
+        DEFAULT_Y = (game.getWindowHeight() / 2) - (this.height / 2);
+        x = DEFAULT_X;
+        y = DEFAULT_Y;
         
     }
     
@@ -90,6 +93,8 @@ public class Ball {
     public void reset(){
         x = DEFAULT_X;
         y = DEFAULT_Y;
+        game.getPlayerOne().reset();
+        game.getPlayerTwo().reset();
         if(serveDirection){
             serveDirection = false;
             xMovement = 0;

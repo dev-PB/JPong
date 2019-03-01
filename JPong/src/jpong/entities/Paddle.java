@@ -2,6 +2,7 @@ package jpong.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import jpong.Game;
 
 /**
  *
@@ -15,15 +16,19 @@ public class Paddle {
     protected int points;
     protected Color colour;
     protected int moveSpeed;
+    protected Game game;
+    protected final int DEFAULT_X;
     
-    public Paddle(int x, int y, int width, int height, Color colour){
+    public Paddle(int x, int y, int width, int height, Color colour, Game game){
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;  
         this.colour = colour;
+        this.game = game;
         points = 0;
         moveSpeed = 2;
+        DEFAULT_X = (game.getWindowWidth() / 2) - (width/2);
     }
     public void update(Graphics graphics){
         movePaddle();
@@ -61,5 +66,9 @@ public class Paddle {
     
     public void incrementPoints(){
         points++;
+    }
+    
+    public void reset(){
+        x = DEFAULT_X;
     }
 }

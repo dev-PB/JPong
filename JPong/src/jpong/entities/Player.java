@@ -8,12 +8,10 @@ import jpong.Game;
  * @author Ryan Wilson
  */
 public class Player extends Paddle {
-    private Game game;
     private boolean arrowControls;
     
-    public Player(int x, int y, int width, int height, Color colour, boolean arrowControls, Game game){
-        super(x, y, width, height, colour);
-        this.game = game;
+    public Player(int x, int y, int width, int height, Color colour,Game game, boolean arrowControls){
+        super(x, y, width, height, colour, game);
         this.arrowControls = arrowControls;
     }
     

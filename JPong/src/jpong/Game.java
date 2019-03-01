@@ -38,8 +38,8 @@ public class Game implements Runnable {
     private void init(){
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
-        playerOne = new Player(20,20,100,30,Color.red, false, this);
-        playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, true, this);
+        playerOne = new Player(20,20,100,30,Color.red, this, false);
+        playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, this, true);
         ball = new Ball(10,10,Color.black,this);
         
         
