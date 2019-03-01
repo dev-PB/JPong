@@ -54,4 +54,12 @@ public class Paddle {
     public int getHeight(){
         return height;
     }
+    
+    public int getPoints(){
+        return points;
+    }
+    
+    public void incrementPoints(){
+        points++;
+    }
 }

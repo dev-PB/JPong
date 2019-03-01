@@ -76,8 +76,14 @@ public class Ball {
         if(x > game.getWindowWidth() || x + width < 0){
             xMovement = -xMovement;
         }
-        if (y > game.getWindowHeight() || y + height < 0){
+        if (y > game.getWindowHeight()){
             reset();
+            game.getPlayerOne().incrementPoints();
+            System.out.println("P1: " + game.getPlayerOne().getPoints());
+        } else if (y + height < 0) {
+            reset();
+            game.getPlayerTwo().incrementPoints();
+            System.out.println("P2: " + game.getPlayerTwo().getPoints());
         }
     }
     
