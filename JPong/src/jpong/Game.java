@@ -26,6 +26,7 @@ public class Game implements Runnable {
     private Player playerTwo;
     private Ball ball;
     private KeyManager keyManager;
+    private Font scoreFont;
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
         isRunning = false;
@@ -41,6 +42,7 @@ public class Game implements Runnable {
         display.getJFrame().addKeyListener(keyManager);
         playerOne = new Player(20,20,100,30,Color.red, this, false);
         playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, this, true);
+        scoreFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         ball = new Ball(10,10,Color.black,this);
         
         
@@ -74,8 +76,7 @@ public class Game implements Runnable {
     }
     
     private void renderScores(int p1Points, int p2Points){
-     
-        graphics.setFont(new Font("Arial", Font.PLAIN, 20)); 
+        graphics.setFont(scoreFont);
         graphics.drawString("Player one: " + p1Points, windowWidth - 150, 20);
         graphics.drawString("Player two: " + p2Points, windowWidth - 150, windowHeight - 20);
     }
