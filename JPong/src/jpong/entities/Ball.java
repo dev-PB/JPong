@@ -20,6 +20,7 @@ public class Ball {
     private Graphics graphics;
     private int xMovement;
     private int yMovement;
+    private boolean serveDirection;
     
     public Ball(int width, int height, Color colour, Game game){
         x = DEFAULT_X;
@@ -30,6 +31,7 @@ public class Ball {
         this.height = height;
         this.colour = colour;
         this.game = game;
+        serveDirection = true;
         
     }
     
@@ -53,17 +55,16 @@ public class Ball {
     private void paddleCollision(){
         if (x <= game.getPlayerOne().getX() + game.getPlayerOne().getWidth() && x>= game.getPlayerOne().getX() && y >= game.getPlayerOne().getY() && y <= game.getPlayerOne().getY() + game.getPlayerOne().getHeight()){
             yMovement = -yMovement;
-            if(x >  game.getPlayerOne().getX() + game.getPlayerOne().getWidth() / 2){
-                xMovement = 10;
+            if(x + (width/2) >  game.getPlayerOne().getX() + game.getPlayerOne().getWidth() / 2){
+                xMovement = 1;
             } else {
-                xMovement = -10;
+                xMovement = -1;
             }
-        }
-        
-        else if (x <= game.getPlayerTwo().getX() + game.getPlayerTwo().getWidth() && x>= game.getPlayerTwo().getX() && y >= game.getPlayerTwo().getY() && y <= game.getPlayerTwo().getY() + game.getPlayerTwo().getHeight()){
             
-            
-            if (x > game.getPlayerTwo().getX() + (game.getPlayerTwo().getWidth() / 2)){
+        } else if (x <= game.getPlayerTwo().getX() + game.getPlayerTwo().getWidth() && x>= game.getPlayerTwo().getX() && y >= game.getPlayerTwo().getY() && y <= game.getPlayerTwo().getY() + game.getPlayerTwo().getHeight()){
+            if(x + (width/2) >  game.getPlayerTwo().getX() + game.getPlayerTwo().getWidth() / 2){
+                xMovement = 1;
+            } else {
                 xMovement = -1;
             }
             
@@ -72,7 +73,7 @@ public class Ball {
     }
     
     private void outOfBounds(){
-        if(x > game.getWindowWidth() || x + width > 0){
+        if(x > game.getWindowWidth() || x + width < 0){
             xMovement = -xMovement;
         }
         if (y > game.getWindowHeight() || y + height < 0){
@@ -83,5 +84,14 @@ public class Ball {
     public void reset(){
         x = DEFAULT_X;
         y = DEFAULT_Y;
+        if(serveDirection){
+            serveDirection = false;
+            xMovement = 0;
+            yMovement = -1;
+        } else {
+            serveDirection = true;
+            xMovement = 0;
+            yMovement = 1;
+        }
     }
 }
