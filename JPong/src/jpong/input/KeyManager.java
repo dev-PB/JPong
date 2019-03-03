@@ -15,10 +15,16 @@ public class KeyManager implements KeyListener {
     private boolean A;
     private boolean D;
     
+    /**
+     * Constructs the KeyManager object
+     */
     public KeyManager(){
         keys = new boolean[256];
     }
     
+    /**
+     * Updates the state of the keys
+     */
     public void update(){
         left = keys[KeyEvent.VK_LEFT];
         right = keys[KeyEvent.VK_RIGHT];
@@ -41,6 +47,11 @@ public class KeyManager implements KeyListener {
         
     }
     
+    /**
+     * Gets the state of the key the player uses to move left
+     * @param arrows if the player uses arrow keys or not
+     * @return true or false for the left arrow key if the arrows parameter is true, or true or false for the A key if the arrows parameter is false
+     */
     public boolean getLeft(boolean arrows){
         if(arrows){
             return left;
@@ -49,6 +60,11 @@ public class KeyManager implements KeyListener {
         }
     }
     
+    /**
+     * Gets the state of the key the player uses to move right
+     * @param arrows if the player uses arrow keys or not
+     * @return true or false for the right arrow key if the arrows parameter is true, or true or false for the D key if the arrows parameter is false
+     */
     public boolean getRight(boolean arrows){
         if(arrows){
             return right;
