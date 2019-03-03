@@ -9,18 +9,22 @@ import jpong.Game;
  * @author Ryan Wilson
  */
 public class Ball {
+    //Fields
     private int x;
     private int y;
     private final int DEFAULT_X;
     private final int DEFAULT_Y;
     private int width;
     private int height;
-    private Color colour;
-    private Game game;
-    private Graphics graphics;
     private int xMovement;
     private int yMovement;
     private boolean serveDirection;
+    
+    //Objects
+    private Color colour;
+    private Game game;
+    private Graphics graphics;
+    
     
     /**
      * Constructs the Ball object
@@ -61,11 +65,13 @@ public class Ball {
         graphics.fillRect(x,y,width,height);
     }
     
+    //Moves the Ball's x and y position
     private void move(){
         x += xMovement;
         y += yMovement;
     }
     
+    //Checks if the ball has collided with a Player's paddle, and changes movement accordingly
     private void paddleCollision(){
         if (x <= game.getPlayerOne().getX() + game.getPlayerOne().getWidth() && x>= game.getPlayerOne().getX() && y >= game.getPlayerOne().getY() && y <= game.getPlayerOne().getY() + game.getPlayerOne().getHeight()){
             yMovement = -yMovement;
@@ -86,6 +92,7 @@ public class Ball {
         }
     }
     
+    //Checks to see if the Ball is out of bounds, and if it is, it bounces.
     private void outOfBounds(){
         if(x > game.getWindowWidth() || x + width < 0){
             xMovement = -xMovement;
