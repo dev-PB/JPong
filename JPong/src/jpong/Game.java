@@ -9,7 +9,7 @@ import jpong.entities.Player;
 import jpong.input.KeyManager;
 
 /**
- *
+ * The Game class handles the running of the game
  * @author Ryan Wilson
  */
 public class Game implements Runnable {

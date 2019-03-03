@@ -5,7 +5,7 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 /**
- *
+ * The Display class handles the JFrame and Canvas for the game window
  * @author Ryan Wilson
  */
 public class Display {

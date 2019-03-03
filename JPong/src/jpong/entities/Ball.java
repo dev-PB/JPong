@@ -5,7 +5,7 @@ import java.awt.Graphics;
 import jpong.Game;
 
 /**
- *
+ * The ball to be used for the game
  * @author Ryan Wilson
  */
 public class Ball {

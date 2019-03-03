@@ -4,7 +4,7 @@ import java.awt.Color;
 import jpong.Game;
 
 /**
- *
+ * A human player
  * @author Ryan Wilson
  */
 public class Player extends Paddle {
