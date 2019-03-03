@@ -41,7 +41,6 @@ public class Ball {
         DEFAULT_Y = (game.getWindowHeight() / 2) - (this.height / 2);
         x = DEFAULT_X;
         y = DEFAULT_Y;
-        
     }
     
     /**
@@ -50,8 +49,7 @@ public class Ball {
     public void update(){
        paddleCollision();
        outOfBounds();
-       move();
-       
+       move();     
     }
     
     /**

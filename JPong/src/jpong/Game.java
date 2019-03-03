@@ -13,6 +13,7 @@ import jpong.input.KeyManager;
  * @author Ryan Wilson
  */
 public class Game implements Runnable {
+    //Fields
     private boolean isRunning;
     private String windowTitle;
     private int windowWidth;
@@ -20,6 +21,7 @@ public class Game implements Runnable {
     private final int WINNING_SCORE;
     private final int FPS;
     
+    //Objects
     private Display display;
     private Thread thread;
     private BufferStrategy buffer;
@@ -27,7 +29,7 @@ public class Game implements Runnable {
     private Player playerOne;
     private Player playerTwo;
     private Ball ball;
-    private KeyManager keyManager;
+    private final KeyManager keyManager;
     private Font scoreFont;
     private Font winFont;
     
@@ -47,6 +49,7 @@ public class Game implements Runnable {
         keyManager = new KeyManager();
     }
     
+    //Initialises objects to be used in the game
     private void init(){   
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
@@ -57,12 +60,14 @@ public class Game implements Runnable {
         ball = new Ball(10,10,Color.black,this);      
     }
     
+    //Ticks the game
     private void update(){
         playerOne.update();
         playerTwo.update();
         ball.update();
     }
     
+    //Renders everything to the screen
     private void render(){
         buffer = display.getCanvas().getBufferStrategy();
         if(buffer == null){
@@ -73,23 +78,27 @@ public class Game implements Runnable {
         
         //Clears screen
         graphics.clearRect(0,0,windowWidth,windowHeight);
+        
         //Renders things
         playerOne.render(graphics);
         playerTwo.render(graphics);
         ball.render(graphics);
         renderScores(playerOne.getPoints(), playerTwo.getPoints());
         renderWinners();
+        
         //Displays buffer
         buffer.show(); 
         graphics.dispose();
     }
     
+    //Renders player's scores to the screen
     private void renderScores(int p1Points, int p2Points){
         graphics.setFont(scoreFont);
         graphics.drawString("Player one: " + p1Points, windowWidth - 150, 20);
         graphics.drawString("Player two: " + p2Points, windowWidth - 150, windowHeight - 20);
     }
     
+    //Renders the win screen for either player if one of them wins
     private void renderWinners(){
         graphics.setFont(winFont);
         if (playerOne.checkIfWin(WINNING_SCORE)){
@@ -148,7 +157,7 @@ public class Game implements Runnable {
         return playerTwo;
     }
     
-    
+    //Runs the game
     @Override 
     public void run(){
         init();
