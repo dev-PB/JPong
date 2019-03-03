@@ -71,7 +71,7 @@ public class Paddle {
         this.colour = colour;
         this.game = game;
         points = 0;
-        moveSpeed = 2;
+        moveSpeed = 20;
         DEFAULT_X = (game.getWindowWidth() / 2) - (width/2);
     }
     

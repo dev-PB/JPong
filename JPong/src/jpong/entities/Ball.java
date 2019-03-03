@@ -19,6 +19,7 @@ public class Ball {
     private int xMovement;
     private int yMovement;
     private boolean serveDirection;
+    private final int VELOCITY;
     
     //Objects
     private Color colour;
@@ -34,8 +35,9 @@ public class Ball {
      * @param game the game object
      */
     public Ball(int width, int height, Color colour, Game game){
+        VELOCITY = 10;
         xMovement = 0;
-        yMovement = -1;
+        yMovement = -VELOCITY;
         this.width = width;
         this.height = height;
         this.colour = colour;
@@ -76,16 +78,16 @@ public class Ball {
         if (x <= game.getPlayerOne().getX() + game.getPlayerOne().getWidth() && x>= game.getPlayerOne().getX() && y >= game.getPlayerOne().getY() && y <= game.getPlayerOne().getY() + game.getPlayerOne().getHeight()){
             yMovement = -yMovement;
             if(x + (width/2) >  game.getPlayerOne().getX() + game.getPlayerOne().getWidth() / 2){
-                xMovement = 1;
+                xMovement = VELOCITY;
             } else {
-                xMovement = -1;
+                xMovement = -VELOCITY;
             }
             
         } else if (x <= game.getPlayerTwo().getX() + game.getPlayerTwo().getWidth() && x>= game.getPlayerTwo().getX() && y >= game.getPlayerTwo().getY() && y <= game.getPlayerTwo().getY() + game.getPlayerTwo().getHeight()){
             if(x + (width/2) >  game.getPlayerTwo().getX() + game.getPlayerTwo().getWidth() / 2){
-                xMovement = 1;
+                xMovement = VELOCITY;
             } else {
-                xMovement = -1;
+                xMovement = -VELOCITY;
             }
             
             yMovement = -yMovement;
@@ -119,11 +121,11 @@ public class Ball {
         if(serveDirection){
             serveDirection = false;
             xMovement = 0;
-            yMovement = -1;
+            yMovement = -VELOCITY;
         } else {
             serveDirection = true;
             xMovement = 0;
-            yMovement = 1;
+            yMovement = VELOCITY;
         }
     }
 }

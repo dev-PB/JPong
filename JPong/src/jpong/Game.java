@@ -58,7 +58,7 @@ public class Game implements Runnable {
         playerTwo = new Player((windowWidth / 2) - 50,windowHeight - 50, 100,30,Color.blue, this, true);
         scoreFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         winFont = new Font("Comic Sans MS", Font.BOLD, 30);
-        ball = new Ball(10,10,Color.black,this);      
+        ball = new Ball(10,10,Color.black,this);   
     }
     
     //Ticks the game
@@ -175,6 +175,7 @@ public class Game implements Runnable {
             if(delta >= 1){
                 update();
                 render();
+                delta--;
             }
         }
         stop();

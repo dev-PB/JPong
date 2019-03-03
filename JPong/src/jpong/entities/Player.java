@@ -29,9 +29,9 @@ public class Player extends Paddle {
     @Override
     public void movePaddle(){
         game.getKeyManager().update();
-        if(game.getKeyManager().getRight(arrowControls) && (x + width) != game.getWindowWidth()){
+        if(game.getKeyManager().getRight(arrowControls) && (x + width) < game.getWindowWidth()){
             x += moveSpeed;
-        } else if (game.getKeyManager().getLeft(arrowControls) && x != 0){
+        } else if (game.getKeyManager().getLeft(arrowControls) && x > 0){
             x -= moveSpeed;
         }
            
