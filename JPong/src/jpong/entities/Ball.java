@@ -2,7 +2,6 @@ package jpong.entities;
 
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.concurrent.TimeUnit;
 import jpong.Game;
 
 /**
@@ -23,6 +22,13 @@ public class Ball {
     private int yMovement;
     private boolean serveDirection;
     
+    /**
+     * Constructs the Ball object
+     * @param width the width of the ball in pixels
+     * @param height the height of the ball in pixels
+     * @param colour the colour of the ball
+     * @param game the game object
+     */
     public Ball(int width, int height, Color colour, Game game){
         xMovement = 1;
         yMovement = -1;
@@ -38,6 +44,9 @@ public class Ball {
         
     }
     
+    /**
+     * Ticks the ball
+     */
     public void update(){
        paddleCollision();
        outOfBounds();
@@ -45,6 +54,10 @@ public class Ball {
        
     }
     
+    /**
+     * Renders the ball
+     * @param graphics the Graphics object
+     */
     public void render(Graphics graphics){
         graphics.setColor(colour);
         graphics.fillRect(x,y,width,height);
@@ -90,6 +103,9 @@ public class Ball {
         }
     }
     
+    /**
+     * Resets the Ball object's position, the Player object's positions, and toggles the direction of the next serve
+     */
     public void reset(){
         x = DEFAULT_X;
         y = DEFAULT_Y;
