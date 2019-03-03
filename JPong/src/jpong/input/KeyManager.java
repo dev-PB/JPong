@@ -8,7 +8,7 @@ import java.awt.event.KeyListener;
  * @author Ryan Wilson
  */
 public class KeyManager implements KeyListener {
-    
+    //Fields
     private boolean[] keys;
     private boolean left;
     private boolean right;

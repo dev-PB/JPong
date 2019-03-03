@@ -25,6 +25,7 @@ public class Player extends Paddle {
         this.arrowControls = arrowControls;
     }
     
+    //Moves the Player's paddle depending on what key they press and what controls they're using
     @Override
     public void movePaddle(){
         game.getKeyManager().update();
