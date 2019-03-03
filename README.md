@@ -1,7 +1,7 @@
 # JPong
 A simple Pong game made in Java.<br/>
 
-_Version 1.0.0 - 03/03/2019_<br/>
+_Version 1.0.1 - 03/03/2019_<br/>
 _© Ryan Wilson 2019. All rights reserved._
 
 ## How to install and run
