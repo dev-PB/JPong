@@ -34,7 +34,7 @@ public class Ball {
      * @param game the game object
      */
     public Ball(int width, int height, Color colour, Game game){
-        xMovement = 1;
+        xMovement = 0;
         yMovement = -1;
         this.width = width;
         this.height = height;

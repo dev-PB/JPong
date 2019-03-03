@@ -54,8 +54,8 @@ public class Game implements Runnable {
     private void init(){   
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
-        playerOne = new Player(20,20,100,30,Color.red, this, false);
-        playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, this, true);
+        playerOne = new Player((windowWidth / 2) - 50,20,100,30,Color.red, this, false);
+        playerTwo = new Player((windowWidth / 2) - 50,windowHeight - 50, 100,30,Color.blue, this, true);
         scoreFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         winFont = new Font("Comic Sans MS", Font.BOLD, 30);
         ball = new Ball(10,10,Color.black,this);      
