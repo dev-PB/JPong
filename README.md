@@ -1,5 +1,5 @@
 # JPong
-A simple Pong game made in Java.
+A simple Pong game made in Java.<br/>
 _Ryan W, 2019._
 
 ## How to play
