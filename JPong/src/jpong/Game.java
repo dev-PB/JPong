@@ -31,6 +31,12 @@ public class Game implements Runnable {
     private Font scoreFont;
     private Font winFont;
     
+    /**
+     * Constructs the Game object
+     * @param windowTitle the title of the window
+     * @param windowWidth the width of the window in pixels
+     * @param windowHeight the height of the window in pixels
+     */
     public Game(String windowTitle, int windowWidth, int windowHeight){
         WINNING_SCORE = 10;
         FPS = 60;
@@ -41,19 +47,14 @@ public class Game implements Runnable {
         keyManager = new KeyManager();
     }
     
-    
-    private void init(){
-        
+    private void init(){   
         display = new Display(windowTitle, windowWidth, windowHeight);
         display.getJFrame().addKeyListener(keyManager);
         playerOne = new Player(20,20,100,30,Color.red, this, false);
         playerTwo = new Player(windowWidth - 50,windowHeight - 50, 100,30,Color.blue, this, true);
         scoreFont = new Font("Comic Sans MS", Font.PLAIN, 20);
         winFont = new Font("Comic Sans MS", Font.BOLD, 30);
-        ball = new Ball(10,10,Color.black,this);
-        
-        
-        
+        ball = new Ball(10,10,Color.black,this);      
     }
     
     private void update(){
@@ -106,22 +107,43 @@ public class Game implements Runnable {
             
         }
     }
+    
+    /**
+     * Gets the keyManager object
+     * @return a keyManager object
+     */
     public KeyManager getKeyManager(){
         return keyManager;
     }
     
+    /**
+     * Gets the width of the window
+     * @return the width of the window in pixels
+     */
     public int getWindowWidth(){
         return windowWidth;
     }
     
+    /**
+     * Gets the height of the window
+     * @return the height of the window in pixels
+     */
     public int getWindowHeight(){
         return windowHeight;
     }
     
+    /**
+     * Gets the Player object for player one
+     * @return the Player object for player one
+     */
     public Player getPlayerOne(){
         return playerOne;
     }
     
+    /**
+     * Gets the Player object for player two
+     * @return the Player object for player two
+     */
     public Player getPlayerTwo(){
         return playerTwo;
     }
@@ -148,6 +170,9 @@ public class Game implements Runnable {
         stop();
     }
     
+    /**
+     * Starts the game and a new thread
+     */
     public synchronized void start(){
         if(isRunning){
             return;
@@ -157,6 +182,9 @@ public class Game implements Runnable {
         thread.start();
     }
     
+    /**
+     * Stops the game and terminates the game thread
+     */
     public synchronized void stop(){
         if(!isRunning){
             return;
