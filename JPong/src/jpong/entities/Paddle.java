@@ -9,14 +9,49 @@ import jpong.Game;
  * @author Ryan Wilson
  */
 public class Paddle {
+    /**
+     * The x position of the Paddle
+     */
     protected int x;
+    
+    /**
+     * The y position of the Paddle
+     */
     protected int y;
+    
+    /**
+     * The width of the Paddle in pixels
+     */
     protected int width;
+    
+    /**
+     * The height of the Paddle in pixels
+     */
     protected int height;
+    
+    /**
+     * The amount of points the Paddle has
+     */
     protected int points;
+    
+    /**
+     * The colour of the Paddle
+     */
     protected Color colour;
+    
+    /**
+     * The amount of pixels the Paddle moves per frame while moving
+     */
     protected int moveSpeed;
+    
+    /**
+     * The Game object
+     */
     protected Game game;
+    
+    /**
+     * The default x position of the paddle
+     */
     protected final int DEFAULT_X;
     
     /**
