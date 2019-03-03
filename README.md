@@ -7,7 +7,8 @@ _© Ryan Wilson 2019. All rights reserved._
 ## How to install and run
 1. Make sure you have [Java](https://www.java.com/download/) version 8 or newer installed.
 1. Go to the [releases](https://github.com/onlinePB/JPong/releases) section on GitHub.
-    1. Download the latest release.
+    1. Download the latest release - it will be a zip file called JPong followed by the version number.
+1. Extract the JPong zip file to a folder.
 1. Run JPong.jar to play the game.
 
 ## How to play
