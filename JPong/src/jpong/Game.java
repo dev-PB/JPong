@@ -18,6 +18,7 @@ public class Game implements Runnable {
     private int windowWidth;
     private int windowHeight;
     private final int WINNING_SCORE;
+    private final int FPS;
     
     private Display display;
     private Thread thread;
@@ -32,6 +33,7 @@ public class Game implements Runnable {
     
     public Game(String windowTitle, int windowWidth, int windowHeight){
         WINNING_SCORE = 10;
+        FPS = 60;
         isRunning = false;
         this.windowTitle = windowTitle;
         this.windowWidth = windowWidth;
@@ -128,9 +130,20 @@ public class Game implements Runnable {
     @Override 
     public void run(){
         init();
+        double timePerUpdate = 1000000000 / FPS;
+        double delta = 0;
+        long now;
+        long lastTime = System.nanoTime();
+        
         while(isRunning){
-            update();
-            render();
+            now = System.nanoTime();
+            delta += (now - lastTime) / timePerUpdate;
+            lastTime = now;
+            
+            if(delta >= 1){
+                update();
+                render();
+            }
         }
         stop();
     }
