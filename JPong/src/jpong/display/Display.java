@@ -9,10 +9,12 @@ import javax.swing.JFrame;
  * @author Ryan Wilson
  */
 public class Display {
+    //Fields
     private String title;
     private int width;
     private int height;
     
+    //Objects
     private JFrame frame;
     private Canvas canvas;
     
@@ -29,6 +31,7 @@ public class Display {
         createWindow();
     }
     
+    //Creates a new window
     private void createWindow(){
         frame = new JFrame(title);
         frame.setSize(width, height);
